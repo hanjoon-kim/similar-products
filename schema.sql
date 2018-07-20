@@ -5,7 +5,7 @@ CREATE DATABASE similarProducts;
 USE similarProducts;
 
 CREATE TABLE products (
-id int NOT NULL AUTO_INCREMENT,
+id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 url text,
 name text NOT NULL,
 rating int,
