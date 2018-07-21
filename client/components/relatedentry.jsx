@@ -1,4 +1,3 @@
-import React from '../../../../Library/Caches/typescript/2.9/node_modules/@types/react';
 
 const entryStyle = {
   paper: {
@@ -20,9 +19,9 @@ const entryStyle = {
   }
 };
 
-export default class RelatedEntry extends React.Component {
-  constructor() {
-    super();
+class Product extends React.Component {
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -35,3 +34,5 @@ export default class RelatedEntry extends React.Component {
     );
   }
 }
+
+export default Product;
