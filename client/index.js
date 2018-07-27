@@ -1,1 +1,0 @@
-import Related from './components/similarproducts';
