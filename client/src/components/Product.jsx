@@ -17,5 +17,5 @@ $200
     </div>
   );
 }
-// fek
+
 export default Product;

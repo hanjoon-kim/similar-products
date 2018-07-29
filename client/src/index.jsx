@@ -14,20 +14,20 @@ class App extends React.Component {
     };
   }
 
-  // componentDidMount() {
-  //   this.getProducts();
-  // }
+  componentDidMount() {
+    this.getProducts();
+  }
 
-  // getProducts() {
-  //   axios
-  //     .get('/')
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // }
+  getProducts() {
+    axios
+      .get('http://localhost:3001')
+      .then((response) => {
+        console.log(response.data, 'axios response');
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
 
   render() {
     return (

@@ -15,21 +15,26 @@ const con = mysql.createConnection({
 app.use(bodyParser.json());
 app.use(express.static('client'));
 
-app.get('/', function (req, res) {
-  console.log(req.body, 'inside server');
+app.get('http://localhost:3001', function (req, res) {
+  console.log('hello');
   var data = {};
   con.connect(function (err) {
-    if (err) throw err;
-    console.log('Connected!');
-    var query = 'SELECT * FROM products'
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Connected!');
+      var query = 'SELECT * FROM products';
 
-    con.query(query, function (err, result) {
-      if (err) throw error;
-      console.log('Query successful');
-      data = result;
-    })
+      con.query(query, function (err, result) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log('Query successful');
+          res.send(result);
+        }
+      })
+    }
   })
-  res.send(data);
 })
 
 app.listen(port, () => {
