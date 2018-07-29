@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-// import ProductList from './components/ProductList';
+import ProductList from './components/ProductList.jsx';
 
 // App goes here
 
@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      products: [{}, {}, {}, {}, {}, {}, {}, {}],
     };
   }
 
@@ -35,6 +35,7 @@ class App extends React.Component {
         <h1>
 Customers who viewed this item also viewed
         </h1>
+        <ProductList products={this.state.products} />
       </div>
     );
   }

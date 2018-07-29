@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+div {
+  padding: 10px;
+}
+
+h1 {
+  color: #C60;
+  font-size: 16px;
+  font-family: verdana, arial, helvetica, sans-serif;
+}
