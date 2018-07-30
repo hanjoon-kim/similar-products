@@ -34,17 +34,21 @@ class App extends React.Component {
   }
 
   getNextProducts() {
-    this.index += this.size;
-    this.index = this.index % this.data.length;
+    if (this.index + this.size > this.data.length) {
+      this.index = 0;
+    } else {
+      this.index += this.size;
+      this.index = this.index % this.data.length;
+    }
     const products = this.data.slice(this.index, this.index + this.size);
     this.setState({ products });
   }
 
   getPreviousProducts() {
-    if (this.index - this.size > 0) {
+    if (this.index - this.size >= 0) {
       this.index -= this.size;
     } else {
-      this.index = this.index - this.size + this.data.length;
+      this.index = this.data.length - (this.data.length % this.size);
     }
     const products = this.data.slice(this.index, this.index + this.size);
     this.setState({ products });
@@ -58,7 +62,13 @@ class App extends React.Component {
 Customers who viewed this item also viewed
           </div>
           <div className="page">
-Page 1 of 3
+            Page
+            {' '}
+            {Math.ceil(this.index / this.size) + 1}
+            {' '}
+of
+            {' '}
+            {Math.floor(this.data.length / this.size) + 1}
           </div>
         </div>
         <div className="main">
