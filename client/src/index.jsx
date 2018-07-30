@@ -2,7 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import $ from 'jquery';
+import fontawesome from '@fortawesome/fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import ProductList from './components/ProductList.jsx';
+
+fontawesome.library.add(faAngleRight, faAngleLeft);
 
 class App extends React.Component {
   constructor(props) {
@@ -73,11 +79,11 @@ of
         </div>
         <div className="main">
           <button id="button" onClick={this.getPreviousProducts}>
-            {'< '}
+            <FontAwesomeIcon icon="angle-left" size="2x" />
           </button>
           <ProductList products={this.state.products} />
           <button id="button" onClick={this.getNextProducts}>
-            {'> '}
+            <FontAwesomeIcon icon="angle-right" size="2x" />
           </button>
         </div>
       </div>
