@@ -2,17 +2,22 @@ import React from 'react';
 import '../style.css';
 
 function Product(props) {
+  const product = props.product;
+
   return (
     <div>
-      <img src="https://images.solecollector.com/complex/image/upload/c_fill,f_auto,fl_lossy,h_182,q_auto,w_328/c0eavsxmkfwipqc0nbjr.jpg" />
+      <img src={`https://s3-us-west-1.amazonaws.com/hanjoonk/${product.url}`} />
       <div>
-Lebron Soldier VIII
+        {product.name}
       </div>
       <div>
-4 star average - 100 reviews
+        {product.rating}
+        -
+        {product.reviews}
       </div>
       <div>
-$200
+        $
+        {product.price}
       </div>
     </div>
   );
