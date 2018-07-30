@@ -1,11 +1,8 @@
-// import Related from './components/similarproducts';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import $ from 'jquery';
 import ProductList from './components/ProductList.jsx';
-
-// App goes here
 
 class App extends React.Component {
   constructor(props) {
@@ -13,6 +10,9 @@ class App extends React.Component {
     this.state = {
       products: [],
     };
+    this.getNextProducts = this.getNextProducts.bind(this);
+    this.getPreviousProducts = this.getPreviousProducts.bind(this);
+    (this.index = 0), (this.size = 6), (this.data = []);
   }
 
   componentDidMount() {
@@ -24,23 +24,52 @@ class App extends React.Component {
     axios
       .get('/products')
       .then((response) => {
-        console.log(response.data, 'axios response');
-        const data = response.data.slice(0, 8);
-        self.setState({ products: data });
-        console.log(self.state);
+        self.data = response.data;
+        const products = response.data.slice(self.index, self.index + self.size);
+        self.setState({ products });
       })
       .catch((error) => {
         console.error(error);
       });
   }
 
+  getNextProducts() {
+    this.index += this.size;
+    this.index = this.index % this.data.length;
+    const products = this.data.slice(this.index, this.index + this.size);
+    this.setState({ products });
+  }
+
+  getPreviousProducts() {
+    if (this.index - this.size > 0) {
+      this.index -= this.size;
+    } else {
+      this.index = this.index - this.size + this.data.length;
+    }
+    const products = this.data.slice(this.index, this.index + this.size);
+    this.setState({ products });
+  }
+
   render() {
     return (
       <div>
-        <h1>
+        <div className="top">
+          <div className="title">
 Customers who viewed this item also viewed
-        </h1>
-        <ProductList products={this.state.products} />
+          </div>
+          <div className="page">
+Page 1 of 3
+          </div>
+        </div>
+        <div className="main">
+          <button id="button" onClick={this.getPreviousProducts}>
+            {'< '}
+          </button>
+          <ProductList products={this.state.products} />
+          <button id="button" onClick={this.getNextProducts}>
+            {'> '}
+          </button>
+        </div>
       </div>
     );
   }

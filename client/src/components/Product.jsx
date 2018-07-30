@@ -5,11 +5,14 @@ function Product(props) {
   const product = props.product;
 
   return (
-    <div>
-      <img src={`https://s3-us-west-1.amazonaws.com/hanjoonk/${product.url}`} />
-      <div>
+    <div className="product">
+      <img
+        className="productImage"
+        src={`https://s3-us-west-1.amazonaws.com/hanjoonk/${product.url}`}
+      />
+      <a href="#top">
         {product.name}
-      </div>
+      </a>
       <div>
         {product.rating}
         -
