@@ -10,17 +10,31 @@ function Product(props) {
         className="productImage"
         src={`https://s3-us-west-1.amazonaws.com/hanjoonk/${product.url}`}
       />
-      <a href="#top">
-        {product.name}
-      </a>
-      <div>
-        {product.rating}
-        -
+      {' '}
+      <br />
+      {product.name}
+      <div className="reviews">
+        {product.rating ? (
+          <img
+            src={`https://s3-us-west-1.amazonaws.com/hanjoonk/${Math.round(
+              (product.rating * 2) / 2,
+            )}stars.png`}
+          />
+        ) : (
+          ''
+        )}
+        {' '}
         {product.reviews}
       </div>
-      <div>
+      <div className="price">
         $
-        {product.price}
+        {product.price.toFixed(2)}
+        {' '}
+        {product.isPrime ? (
+          <img className="prime" src="https://s3-us-west-1.amazonaws.com/hanjoonk/Prime.png" />
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

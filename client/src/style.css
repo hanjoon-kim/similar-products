@@ -35,13 +35,33 @@
 }
 
 .product {
+  color: #0066c0;
   padding: 20px;
   width: 180px;
   height: 236px;
+  font-family: "Amazon Ember", Arial, sans-serif;
+  font-size: 13px;
+  padding-left: 1px;
 }
 
 #button {
   width: 35px;
   height: relative;
   text-align: center;
+}
+
+.prime {
+  vertical-align: bottom;
+}
+
+.price {
+  padding-left: 1px;
+  color: #B12704;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+
+.reviews {
+  padding-top: 1px;
+  color: #0066c0;
 }
