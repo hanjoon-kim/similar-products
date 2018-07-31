@@ -1,37 +1,36 @@
 import React from 'react';
-import '../style.css';
+import styles from '../style.css';
 
 function Product(props) {
   const product = props.product;
 
   return (
-    <div className="product">
+    <div className={styles.product}>
       <img
-        className="productImage"
+        className={styles.productImage}
         src={`https://s3-us-west-1.amazonaws.com/hanjoonk/${product.url}`}
-      />
-      {' '}
+      />{' '}
       <br />
       {product.name}
-      <div className="reviews">
+      <div className={styles.reviews}>
         {product.rating ? (
           <img
             src={`https://s3-us-west-1.amazonaws.com/hanjoonk/${Math.round(
-              (product.rating * 2) / 2,
+              (product.rating * 2) / 2
             )}stars.png`}
           />
         ) : (
           ''
-        )}
-        {' '}
+        )}{' '}
         {product.reviews}
       </div>
-      <div className="price">
-        $
-        {product.price.toFixed(2)}
-        {' '}
+      <div className={styles.price}>
+        ${product.price.toFixed(2)}{' '}
         {product.isPrime ? (
-          <img className="prime" src="https://s3-us-west-1.amazonaws.com/hanjoonk/Prime.png" />
+          <img
+            className={styles.prime}
+            src="https://s3-us-west-1.amazonaws.com/hanjoonk/Prime.png"
+          />
         ) : (
           ''
         )}

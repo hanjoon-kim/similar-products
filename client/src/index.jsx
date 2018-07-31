@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import $ from 'jquery';
+import styles from './style.css';
 import fontawesome from '@fortawesome/fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,7 +14,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      products: [],
+      products: []
     };
     this.getNextProducts = this.getNextProducts.bind(this);
     this.getPreviousProducts = this.getPreviousProducts.bind(this);
@@ -29,12 +29,12 @@ class App extends React.Component {
     const self = this;
     axios
       .get('/products')
-      .then((response) => {
+      .then(response => {
         self.data = response.data;
         const products = response.data.slice(self.index, self.index + self.size);
         self.setState({ products });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
       });
   }
@@ -61,28 +61,22 @@ class App extends React.Component {
   }
 
   render() {
+    console.log();
     return (
       <div>
-        <div className="top">
-          <div className="title">
-Customers who viewed this item also viewed
-          </div>
-          <div className="page">
-            Page
-            {' '}
-            {Math.ceil(this.index / this.size) + 1}
-            {' '}
-of
-            {' '}
+        <div className={styles.top}>
+          <div className={styles.title}>Customers who viewed this item also viewed</div>
+          <div className={styles.page}>
+            Page {Math.ceil(this.index / this.size) + 1} of{' '}
             {Math.floor(this.data.length / this.size) + 1}
           </div>
         </div>
-        <div className="main">
-          <button id="button" onClick={this.getPreviousProducts}>
+        <div className={styles.main}>
+          <button className={styles.button} onClick={this.getPreviousProducts}>
             <FontAwesomeIcon icon="angle-left" size="2x" />
           </button>
           <ProductList products={this.state.products} />
-          <button id="button" onClick={this.getNextProducts}>
+          <button className={styles.button} onClick={this.getNextProducts}>
             <FontAwesomeIcon icon="angle-right" size="2x" />
           </button>
         </div>
