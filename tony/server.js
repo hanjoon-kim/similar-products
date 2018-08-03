@@ -8,8 +8,8 @@ const port = 3001;
 
 const con = mysql.createConnection({
   user: 'root',
-  password: 'password',
-  database: 'similarProducts',
+  database: 'similarproducts',
+  host: 'database'
 });
 
 app.use(bodyParser.json());
