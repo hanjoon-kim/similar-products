@@ -13,9 +13,9 @@ const con = mysql.createConnection({
 });
 
 app.use(bodyParser.json());
-app.use(express.static('./'));
+app.use(express.static('client'));
 
-app.get('/products', function (req, res) {
+app.get('/related/api', function (req, res) {
   con.connect((err) => {
     if (err) {
       console.log('Error connecting to MySql');
@@ -34,6 +34,10 @@ app.get('/products', function (req, res) {
       res.send(result);
     }
   })
+})
+
+app.get(`*`, (req, res) => {
+  res.sendFile(path.resolve(__dirname, `index.html`));
 })
 
 app.listen(port, () => {

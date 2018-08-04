@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-mysql -u root -p password < ./schema.sql
+mysql -u root -p < ./schema.sql

@@ -1,8 +1,8 @@
 DROP DATABASE IF EXISTS similarProducts;
 
-CREATE DATABASE similarProducts;
+CREATE DATABASE similarproducts;
 
-USE similarProducts;
+USE similarproducts;
 
 CREATE TABLE products
 (

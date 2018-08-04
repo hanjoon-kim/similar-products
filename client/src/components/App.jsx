@@ -17,6 +17,7 @@ class App extends React.Component {
     };
     this.getNextProducts = this.getNextProducts.bind(this);
     this.getPreviousProducts = this.getPreviousProducts.bind(this);
+    this.shuffleArray = this.shuffleArray.bind(this);
     (this.index = 0), (this.size = 6), (this.data = []);
   }
 
@@ -24,13 +25,24 @@ class App extends React.Component {
     this.getProducts();
   }
 
+  shuffleArray(array) {
+    let i = array.length - 1;
+    for (; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
+
   getProducts() {
     const self = this;
     axios
-      .get('/products')
+      .get('/related/api')
       .then(response => {
-        self.data = response.data;
-        const products = response.data.slice(self.index, self.index + self.size);
+        self.data = this.shuffleArray(response.data);
+        let products = self.data.slice(self.index, self.index + self.size);
         self.setState({ products });
       })
       .catch(error => {
@@ -45,7 +57,7 @@ class App extends React.Component {
       this.index += this.size;
       this.index = this.index % this.data.length;
     }
-    const products = this.data.slice(this.index, this.index + this.size);
+    let products = this.data.slice(this.index, this.index + this.size);
     this.setState({ products });
   }
 
@@ -55,7 +67,7 @@ class App extends React.Component {
     } else {
       this.index = this.data.length - (this.data.length % this.size);
     }
-    const products = this.data.slice(this.index, this.index + this.size);
+    let products = this.data.slice(this.index, this.index + this.size);
     this.setState({ products });
   }
 
