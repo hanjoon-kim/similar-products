@@ -1,3 +1,7 @@
 module.exports = {
-    "extends": ["airbnb", "plugin:react/recommended"]
+    "extends": ["airbnb", "prettier"]
+    "plugins": ["prettier", "react/recommended"],
+    "rules": {
+        "prettier/prettier": ["error"]
+    },
 };

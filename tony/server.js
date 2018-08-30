@@ -8,8 +8,8 @@ const port = 3001;
 
 const con = mysql.createConnection({
   user: 'root',
-  password: 'password',
   database: 'similarproducts',
+  host: 'database'
 });
 
 app.use(bodyParser.json());
@@ -37,7 +37,7 @@ app.get('/related/api', function (req, res) {
 })
 
 app.get(`*`, (req, res) => {
-  res.sendFile(path.resolve(__dirname, `../client`, `index.html`));
+  res.sendFile(path.resolve(__dirname, `index.html`));
 })
 
 app.listen(port, () => {

@@ -1,0 +1,24 @@
+version: '3'
+services:
+  similarproducts:
+    build: tony/
+    depends_on:
+      - 'database'
+    ports:
+      - '3001:3001'
+
+  database:
+    build: tony/database/
+
+version: '3'
+
+services:
+  similarproducts:
+    image: hanjoon3/similar-products_similarproducts
+    depends_on:
+      - 'database'
+    ports:
+      - '80:3001'
+
+  database:
+    image: hanjoon3/similar-products_database

@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS similarProducts;
+DROP DATABASE IF EXISTS similarproducts;
 
 CREATE DATABASE similarproducts;
 
